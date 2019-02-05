@@ -26,7 +26,7 @@ class App extends Component {
   }
 
   onGenerateParty = (e) => {
-    
+
   }
 
   render() {
@@ -35,7 +35,7 @@ class App extends Component {
     const currentChar = character.name;
     const currentCharDetails = Object.values(character);
     // console.log(currentCharDetails);
-  
+    console.log(size);
     return (
       <div>
         <Settings partySize={this.onSearchChange}/>

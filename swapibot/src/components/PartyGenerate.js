@@ -3,7 +3,8 @@ import React from 'react';
 const PartyGenerate = ({ generateParty }) => {
 
 	return (
-		<div>
+		<div className="tc">
+			Roll Party<input type="submit" />
 		</div>
 	)
 }
