@@ -9,7 +9,8 @@ class App extends Component {
     super()
     this.state = {
       character: '',
-      person: {}
+      person: {},
+      size: 0
     }
   }
 
@@ -17,20 +18,22 @@ class App extends Component {
     fetch('https://swapi.co/api/people/1')
       .then(response => response.json())
       .then(name => this.setState({ character:name }));
-    // fetch('https://swapi.co/api/people/1')
-    //   .then(response => response.json())
-    //   .then(name => this.setState({ person: character }));
+  }
+
+  onSearchChange = (e) => {
+    this.setState({ size: e.target.value })
   }
 
   render() {
-    const { character } = this.state;
+    const { character, size } = this.state;
     // const { person } = this.state;
     const currentChar = character.name;
     const currentCharDetails = Object.values(character);
-    console.log(currentCharDetails);
+    // console.log(currentCharDetails);
+  
     return (
       <div>
-        <Settings />
+        <Settings partySize={this.onSearchChange}/>
         <Card character={currentChar}/>
       </div>
       // <div className="App">
