@@ -3,6 +3,7 @@ import logo from '../logo.svg';
 import './App.css';
 import Card from '../components/Card';
 import Settings from '../components/Settings';
+import PartyGenerate from '../components/PartyGenerate';
 
 class App extends Component {
   constructor() {
@@ -24,6 +25,10 @@ class App extends Component {
     this.setState({ size: e.target.value })
   }
 
+  onGenerateParty = (e) => {
+    
+  }
+
   render() {
     const { character, size } = this.state;
     // const { person } = this.state;
@@ -34,6 +39,7 @@ class App extends Component {
     return (
       <div>
         <Settings partySize={this.onSearchChange}/>
+        <PartyGenerate generateParty={this.onGenerateParty}/>
         <Card character={currentChar}/>
       </div>
       // <div className="App">
