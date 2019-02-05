@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import logo from '../logo.svg';
 import './App.css';
 import Card from '../components/Card';
+import Settings from '../components/Settings';
 
 class App extends Component {
   constructor() {
@@ -28,7 +29,10 @@ class App extends Component {
     const currentCharDetails = Object.values(character);
     console.log(currentCharDetails);
     return (
-      <Card character={currentChar}/>
+      <div>
+        <Settings />
+        <Card character={currentChar}/>
+      </div>
       // <div className="App">
       //   <header className="App-header">
       //     <img src={logo} className="App-logo" alt="logo" />
