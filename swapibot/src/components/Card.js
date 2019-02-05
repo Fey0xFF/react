@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Card = ({ character}) => {
+const Card = ({ character }) => {
 	return (
 		<div className='tc'>
 			<h1>I'm a card!</h1>
