@@ -7,19 +7,26 @@ class App extends Component {
   constructor() {
     super()
     this.state = {
-      character: ''
+      character: '',
+      person: {}
     }
   }
 
   componentDidMount() {
     fetch('https://swapi.co/api/people/1')
       .then(response => response.json())
-      .then(name => this.setState({ character: name }));
+      .then(name => this.setState({ character:name }));
+    // fetch('https://swapi.co/api/people/1')
+    //   .then(response => response.json())
+    //   .then(name => this.setState({ person: character }));
   }
 
   render() {
     const { character } = this.state;
+    // const { person } = this.state;
     const currentChar = character.name;
+    const currentCharDetails = Object.values(character);
+    console.log(currentCharDetails);
     return (
       <Card character={currentChar}/>
       // <div className="App">
