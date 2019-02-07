@@ -1,6 +1,8 @@
 import React from 'react';
+import Cardlist from './Cardlist';
 
 const Card = ({ character }) => {
+	console.log(character);
 	return (
 		<div className='tc'>
 			<h1>Party Member</h1>

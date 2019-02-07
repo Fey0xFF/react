@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import logo from '../logo.svg';
 import './App.css';
-import Card from '../components/Card';
+// import Card from '../components/Card';
+import Cardlist from '../components/Cardlist';
 import Settings from '../components/Settings';
 import PartyGenerate from '../components/PartyGenerate';
 
@@ -22,7 +23,14 @@ class App extends Component {
   }
 
   onSearchChange = (e) => {
-    this.setState({ size: e.target.value })
+    let partySizeN = e.target.value;
+    if (partySizeN > 5) {
+      this.setState({ size: 5 })
+    } else if (partySizeN < 1) {
+      this.setState({ size: 1 })
+    } else {
+      this.setState({ size: partySizeN })
+    }
   }
 
   onGenerateParty = (e) => {
@@ -31,33 +39,15 @@ class App extends Component {
 
   render() {
     const { character, size } = this.state;
-    // const { person } = this.state;
     const currentChar = character.name;
-    const currentCharDetails = Object.values(character);
-    // console.log(currentCharDetails);
     console.log(size);
+    console.log(currentChar);
     return (
       <div>
         <Settings partySize={this.onSearchChange}/>
         <PartyGenerate generateParty={this.onGenerateParty}/>
-        <Card character={currentChar}/>
+        <Cardlist currentChar={currentChar} size={size}/>
       </div>
-      // <div className="App">
-      //   <header className="App-header">
-      //     <img src={logo} className="App-logo" alt="logo" />
-      //     <p>
-      //       Edit <code>src/App.js</code> and save to reload.
-      //     </p>
-      //     <a
-      //       className="App-link"
-      //       href="https://reactjs.org"
-      //       target="_blank"
-      //       rel="noopener noreferrer"
-      //     >
-      //       Learn React
-      //     </a>
-      //   </header>
-      // </div>
     );
   }
 }
