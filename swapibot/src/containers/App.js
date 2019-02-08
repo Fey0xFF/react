@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import logo from '../logo.svg';
+// import logo from '../logo.svg';
 import './App.css';
 // import Card from '../components/Card';
 import Cardlist from '../components/Cardlist';
@@ -12,7 +12,7 @@ class App extends Component {
     this.state = {
       character: '',
       person: {},
-      size: 0
+      size: 0,
     }
   }
 
@@ -40,8 +40,8 @@ class App extends Component {
   render() {
     const { character, size } = this.state;
     const currentChar = character.name;
-    console.log(size);
-    console.log(currentChar);
+    // console.log(size);
+    // console.log(currentChar);
     return (
       <div>
         <Settings partySize={this.onSearchChange}/>

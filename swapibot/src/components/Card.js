@@ -1,16 +1,15 @@
 import React from 'react';
 import Cardlist from './Cardlist';
 
-const Card = ({ character }) => {
-	console.log(character);
+const Card = ({ character, characterList }) => {
 	return (
-		<div className='tc'>
-			<h1>Party Member</h1>
+		<div>
+			<h1>Party Member #</h1>
 			<p>Name: {character}</p>
-			<p>detail1</p>
-			<p>detail2</p>
-			<p>detail3</p>
-			<p>detail4</p>
+			<p>Gender: </p>
+			<p>Height: </p>
+			<p>Mass: </p>
+			<p>Birth Year:</p>
 		</div>
 	);
 };
