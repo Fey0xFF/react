@@ -13,8 +13,10 @@ class App extends Component {
     }
   }
 
-  addOne() {
-    this.setState({ partySize: this.state.partySize + 1})
+  addOne = () => {
+    this.setState(({ partySize }) => ({
+      partySize: partySize + 1
+    }));
     console.log('hello');
   }
 
