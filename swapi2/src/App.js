@@ -11,7 +11,8 @@ class App extends Component {
     super(props);
     this.state = {
         partySize: 0,
-        randVal: 0
+        randVal: 0,
+        randParty: []
     }
   }
 
@@ -30,6 +31,11 @@ class App extends Component {
   }
 
   onRoll = () => {
+    let times = 0;
+    while (times < this.state.partySize) {
+      times++;
+      console.log("hello")
+    }
     this.setState(({ randVal }) => ({
       randVal: Math.floor(Math.random()*87 + 1)
     }))
