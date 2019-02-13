@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import Card from './Card';
+import Cardlist from './Cardlist';
 import Roll from './Roll';
 import Settings from './Settings';
 
@@ -9,7 +10,8 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-        partySize: 0
+        partySize: 0,
+        randVal: 0
     }
   }
 
@@ -17,24 +19,33 @@ class App extends Component {
     this.setState(({ partySize }) => ({
       partySize: partySize + 1
     }));
-    console.log('hello');
+    console.log('add');
   }
 
-  minusOne() {
-    console.log('bye');
+  minusOne = () => {
+    this.setState(({ partySize }) => ({
+      partySize: partySize - 1
+    }));
+    console.log('minus');    
+  }
+
+  onRoll = () => {
+    this.setState(({ randVal }) => ({
+      randVal: Math.floor(Math.random()*87 + 1)
+    }))
   }
 
   render() {
-    const { partySize } = this.state;
+    const { partySize, randVal } = this.state;
     return (
       <div>
         <h1>Party Size</h1>
         <button id="plus" onClick={this.addOne}>+1</button>
         <button id="minus" onClick={this.minusOne}>-1</button>        
         <p>{partySize}</p>
-        <Roll />
+        <button id="roll" onClick={this.onRoll}>Roll</button>
         <div>
-          <Card />
+          <Cardlist party={partySize} randCharValue={randVal}/>
         </div>
       </div>
     );
