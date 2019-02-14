@@ -11,15 +11,15 @@ class App extends Component {
     super()
     this.state = {
       character: '',
-      person: {},
-      size: 0,
+      size: 1,
+      teamList: []
     }
   }
 
   componentDidMount() {
     fetch('https://swapi.co/api/people/1')
       .then(response => response.json())
-      .then(name => this.setState({ character:name }));
+      .then(char => this.setState({ teamList: char }));
   }
 
   onSearchChange = (e) => {
@@ -33,14 +33,10 @@ class App extends Component {
     }
   }
 
-  onGenerateParty = (e) => {
-
-  }
 
   render() {
-    const { character, size } = this.state;
-    const currentChar = character.name;
-    // console.log(size);
+    const { character, size, teamList } = this.state;
+    const currentChar = teamList.name;
     // console.log(currentChar);
     return (
       <div>
