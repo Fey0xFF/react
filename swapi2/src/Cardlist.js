@@ -1,8 +1,9 @@
 import React from 'react';
 import Card from './Card';
 
-const Cardlist = ({ party, randCharValue }) => {
-	const charList = [];
+const Cardlist = ({ party, partyArray, randPartyNums }) => {
+	console.log('this is randParty', partyArray);
+	let charList = [];
 	let times = 0;
 	let randNum = 0;
 	let randNumArray = [];
@@ -24,25 +25,35 @@ const Cardlist = ({ party, randCharValue }) => {
 		times++;
 	}
 
-	console.log(randNumArray);
+	// console.log(randNumArray);
 
-	function generateTeam(size) {
-		for (let i = 0; i < size; i++) {
-			fetch(`https://swapi.co/api/people/${randNumArray[i]}`)
-				.then(response => response.json())
-				.then(char => charList[i] = char)
-		}
+	function generateTeam(size, teamArray) {
+		// for (let i = 0; i < size; i++) {
+		// 	fetch(`https://swapi.co/api/people/${randNumArray[i]}`)
+		// 		.then(response => response.json())
+		// 		.then(char => teamArray[i] = char)
+		// }
 	}
 
-	generateTeam(party);
-	console.log(charList);
+	generateTeam(party, charList);
+	// console.log(charList);
+	// console.log(charList.length);
 
-	return (
+	return !charList.length ? 
+	<h1>Loading</h1> :
+	(
 		<div>
-			<Card />
-			<Card />
+			{
+				charList.map((user, i) => {
+					return (
+						<Card 
+							name={charList[i].name}
+						/>
+					);
+				})
+			}
 		</div>
 	)
-}
+};
 
 export default Cardlist;

@@ -12,7 +12,10 @@ class App extends Component {
     this.state = {
         partySize: 0,
         randVal: 0,
-        randParty: []
+        randParty: [],
+        randNumArray: [],
+        randNum: 0,
+        times: 0
     }
   }
 
@@ -20,29 +23,52 @@ class App extends Component {
     this.setState(({ partySize }) => ({
       partySize: partySize + 1
     }));
-    console.log('add');
   }
 
   minusOne = () => {
     this.setState(({ partySize }) => ({
       partySize: partySize - 1
-    }));
-    console.log('minus');    
+    }));  
   }
 
-  onRoll = () => {
-    let times = 0;
-    while (times < this.state.partySize) {
-      times++;
-      console.log("hello")
+  genRand = () => {
+    return Math.floor(Math.random()*87 + 1)
+  }
+
+  generateTeam = (size, randNumArray) => {
+    let workingArray = [];
+    for (let i = 0; i < size; i++) {
+      fetch(`https://swapi.co/api/people/${randNumArray[i]}`)
+        .then(response => response.json())
+        .then(char => workingArray[i] = char)
     }
-    this.setState(({ randVal }) => ({
-      randVal: Math.floor(Math.random()*87 + 1)
-    }))
+    this.setState({ randParty: workingArray })
+  }
+
+  onRoll = (randNumArray, partySize, randParty) => {
+    let times = 0;
+    let timesToRun = this.state.partySize
+    randNumArray = [];
+
+    while (times < timesToRun) {
+      console.log('running')
+      while(true) {
+        let newRand = this.genRand()
+        if (randNumArray.includes(newRand) || newRand === 17) {
+          console.log("duplicate")
+        } else {
+          randNumArray[times] = newRand
+          break;
+        }
+      }
+      times++;
+    }
+
+    this.generateTeam(timesToRun, randNumArray);
   }
 
   render() {
-    const { partySize, randVal } = this.state;
+    const { partySize, randVal, randParty, randNumArray } = this.state;
     return (
       <div>
         <h1>Party Size</h1>
@@ -50,9 +76,7 @@ class App extends Component {
         <button id="minus" onClick={this.minusOne}>-1</button>        
         <p>{partySize}</p>
         <button id="roll" onClick={this.onRoll}>Roll</button>
-        <div>
-          <Cardlist party={partySize} randCharValue={randVal}/>
-        </div>
+        <Cardlist party={partySize} partyArray={randParty} randPartyNums={randNumArray}/>
       </div>
     );
   }

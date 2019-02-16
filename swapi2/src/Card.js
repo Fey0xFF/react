@@ -1,15 +1,14 @@
 import React from 'react';
 
-const Card = () => {
-
-	return (
-		<div>
-			<h1>Character</h1>
-			<p>Name</p>
-			<p>Age</p>
-			<p>Birth Place</p>
-			<p>Home World</p>
-		</div>
+const Card = ({ name }) => {
+		return (
+			<div>
+				<h1>Character</h1>
+				<p>{name}</p>
+				<p>Age</p>
+				<p>Birth Place</p>
+				<p>Home World</p>
+			</div>
 	)
 }
 
