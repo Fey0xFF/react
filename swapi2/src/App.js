@@ -42,7 +42,7 @@ class App extends Component {
         .then(response => response.json())
         .then(char => workingArray[i] = char)
     }
-    this.setState({ randParty: workingArray })
+    this.setState({ randParty: workingArray }) 
   }
 
   onRoll = (randNumArray, partySize, randParty) => {
@@ -63,20 +63,20 @@ class App extends Component {
       }
       times++;
     }
-
     this.generateTeam(timesToRun, randNumArray);
   }
 
   render() {
-    const { partySize, randVal, randParty, randNumArray } = this.state;
+    const { partySize, randParty} = this.state;
     return (
-      <div>
+      <div className='tc'>
         <h1>Party Size</h1>
         <button id="plus" onClick={this.addOne}>+1</button>
         <button id="minus" onClick={this.minusOne}>-1</button>        
         <p>{partySize}</p>
+        <p>{randParty.length}</p>
         <button id="roll" onClick={this.onRoll}>Roll</button>
-        <Cardlist party={partySize} partyArray={randParty} randPartyNums={randNumArray}/>
+        <Cardlist partyArray={randParty}/>
       </div>
     );
   }

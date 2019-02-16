@@ -1,53 +1,27 @@
 import React from 'react';
 import Card from './Card';
 
-const Cardlist = ({ party, partyArray, randPartyNums }) => {
+const Cardlist = ({ partyArray }) => {
+
 	console.log('this is randParty', partyArray);
-	let charList = [];
-	let times = 0;
-	let randNum = 0;
-	let randNumArray = [];
-
-	function genRand() {
-		return Math.floor(Math.random()*87 + 1)
-	}
-
-	while (times < party) {
-		while(true) {
-			let newRand = genRand()
-			if (randNumArray.includes(newRand) || newRand === 17) {
-				console.log("duplicate")
-			} else {
-				randNumArray[times] = newRand
-				break;
-			}
-		}
-		times++;
-	}
-
-	// console.log(randNumArray);
-
-	function generateTeam(size, teamArray) {
-		// for (let i = 0; i < size; i++) {
-		// 	fetch(`https://swapi.co/api/people/${randNumArray[i]}`)
-		// 		.then(response => response.json())
-		// 		.then(char => teamArray[i] = char)
-		// }
-	}
-
-	generateTeam(party, charList);
-	// console.log(charList);
-	// console.log(charList.length);
-
-	return !charList.length ? 
+	console.log('party array length', partyArray.length)
+	return !partyArray.length ? 
 	<h1>Loading</h1> :
 	(
 		<div>
 			{
-				charList.map((user, i) => {
+				partyArray.map((user, i) => {
 					return (
 						<Card 
-							name={charList[i].name}
+							charNum={([i])}
+							name={partyArray[i].name}
+							gender={partyArray[i].gender}
+							height={partyArray[i].height}
+							mass={partyArray[i].mass}
+							hairColor={partyArray[i].hair_color}
+							skinColor={partyArray[i].skin_color}
+							eyeColor={partyArray[i].eye_color}
+							birthYear={partyArray[i].birth_year}
 						/>
 					);
 				})
