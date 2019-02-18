@@ -1,10 +1,6 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
-import Card from './Card';
 import Cardlist from './Cardlist';
-import Roll from './Roll';
-import Settings from './Settings';
 
 class App extends Component {
   constructor(props) {
