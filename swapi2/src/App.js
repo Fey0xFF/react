@@ -70,12 +70,11 @@ class App extends Component {
     const { partySize, randParty} = this.state;
     return (
       <div className='tc'>
-        <h1>Party Size</h1>
-        <button id="plus" onClick={this.addOne}>+1</button>
-        <button id="minus" onClick={this.minusOne}>-1</button>        
-        <p>{partySize}</p>
-        <p>{randParty.length}</p>
-        <button id="roll" onClick={this.onRoll}>Roll</button>
+        <h1>Star Wars Party Generator</h1>
+        <button className="f6 grow no-underline br-pill ba bw2 ph3 pv2 mb2 dib black" id="plus" onClick={this.addOne}>+1</button>
+        <button className="f6 grow no-underline br-pill ba bw2 ph3 pv2 mb2 dib black" id="minus" onClick={this.minusOne}>-1</button>        
+        <p>Party Size: {partySize}</p>
+        <button className="f6 grow no-underline br-pill ba bw2 ph3 pv2 mb2 dib black" id="roll" onClick={this.onRoll}>Use The Force</button>
         <Cardlist partyArray={randParty}/>
       </div>
     );
