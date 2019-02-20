@@ -13,7 +13,7 @@ const Cardlist = ({ partyArray }) => {
 				partyArray.map((user, i) => {
 					return (
 						<Card 
-							charNum={([i])}
+							key={i}
 							name={partyArray[i].name}
 							gender={partyArray[i].gender}
 							height={partyArray[i].height}

@@ -38,7 +38,7 @@ class App extends Component {
         .then(response => response.json())
         .then(char => workingArray[i] = char)
     }
-    this.setState({ randParty: workingArray }) 
+    this.setState({ randParty: workingArray })    
   }
 
   onRoll = (randNumArray, partySize, randParty) => {
@@ -47,7 +47,6 @@ class App extends Component {
     randNumArray = [];
 
     while (times < timesToRun) {
-      console.log('running')
       while(true) {
         let newRand = this.genRand()
         if (randNumArray.includes(newRand) || newRand === 17) {
@@ -58,8 +57,15 @@ class App extends Component {
         }
       }
       times++;
-    }
+    }   
     this.generateTeam(timesToRun, randNumArray);
+  }
+
+  componentDidMount() {
+    this.interval = setInterval(() => this.setState({ time: Date.now() }), 1000);
+  } 
+  componentWillUnmount() {
+    clearInterval(this.interval);
   }
 
   render() {
