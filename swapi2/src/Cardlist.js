@@ -6,7 +6,7 @@ const Cardlist = ({ partyArray }) => {
 	console.log('this is randParty', partyArray);
 	console.log('party array length', partyArray.length)
 	return !partyArray.length ? 
-	<h1>Loading</h1> :
+	<p className="starText starYellow">Loading</p> :
 	(
 		<div>
 			{
