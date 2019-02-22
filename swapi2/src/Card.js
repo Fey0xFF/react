@@ -2,9 +2,9 @@ import React from 'react';
 
 const Card = ({ charNum, name, gender, height, mass, hairColor, skinColor, eyeColor, birthYear }) => {
 		return (
-			<div className='starText tc bg-light-green dib br3 pa3 ma2 grow bw2 shadow-5'>
-				<h2 className="f5">{name}</h2>
-				<div className='f6 fw4 gray mt0'>
+			<div className='w-25 h-50 starText starYellow tc stormBG dib br3 pa3 ma2 grow bw2 shadow-5'>
+				<h2 className="f3 underline">{name}</h2>
+				<div className='f4 fw4 mt0'>
 					<p>Gender: {gender}</p>
 					<p>Height: {height}</p>
 					<p>Mass: {mass}</p>
